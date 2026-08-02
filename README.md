@@ -91,10 +91,6 @@ Top 5 processes by memory usage:
 - [ ] Afficher l'uptime du serveur
 - [ ] Automatiser l'exécution via un cron job
 
-## 📄 Licence
 
-Ce projet est libre d'utilisation et de modification (Licence MIT).
 
-## 🤝 Contribuer
 
-Les pull requests sont les bienvenues ! Si tu as une suggestion ou trouves un bug, ouvre une issue ou propose une PR.
