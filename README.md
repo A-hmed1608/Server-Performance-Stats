@@ -1,24 +1,24 @@
 # Server Performance Stats
 
-Script Bash bسيط لي كيعطيك نظرة شاملة على حالة السرفر ديالك (CPU, RAM, Disk, و Top Processes) فشي ثواني، بلا ما تحتاج تدخل لعدة أوامر بوحدها.
+Un script Bash simple qui te donne une vue d'ensemble complète de l'état du serveur (CPU, RAM, Disque et Top Processus) en quelques secondes, sans avoir à taper plusieurs commandes séparément.
 
 ## 📋 Description
 
-`server-stats.sh` هو سكريبت واحد كيجمع أهم المعلومات ديال الأداء (performance) ديال أي سرفر Linux، ويعرضها بشكل منظم ومقروء فـ terminal.
+`server-stats.sh` est un script unique qui rassemble les informations de performance les plus importantes d'un serveur Linux, et les affiche de façon claire et organisée dans le terminal.
 
-## ✨ Features
+## ✨ Fonctionnalités
 
-السكريبت كيعرض:
+Le script affiche :
 
-1. **CPU Usage** — النسبة المئوية ديال استعمال المعالج (total, machi per-core)
-2. **Memory Usage** — RAM المستعملة، RAM الفارغة، والنسبة المئوية
-3. **Disk Usage** — المساحة المستعملة والفارغة فـ الديسك، مع النسبة المئوية
-4. **Top 5 Processes by CPU** — أكثر 5 processes كايستهلكو المعالج
-5. **Top 5 Processes by Memory** — أكثر 5 processes كايستهلكو الذاكرة
+1. **CPU Usage** — Le pourcentage total d'utilisation du processeur
+2. **Memory Usage** — La RAM utilisée, la RAM libre, et le pourcentage
+3. **Disk Usage** — L'espace disque utilisé et libre, avec le pourcentage
+4. **Top 5 Processes by CPU** — Les 5 processus consommant le plus de CPU
+5. **Top 5 Processes by Memory** — Les 5 processus consommant le plus de mémoire
 
-## 🛠️ Requirements
+## 🛠️ Prérequis
 
-السكريبت خدام على أي نظام Linux فيه هاد الأدوات (غالبا موجودين by default):
+Le script fonctionne sur n'importe quel système Linux disposant de ces outils (généralement présents par défaut) :
 
 - `bash`
 - `top`
@@ -27,25 +27,25 @@ Script Bash bسيط لي كيعطيك نظرة شاملة على حالة الس
 - `ps`
 - `awk`
 
-## 🚀 Installation & Usage
+## 🚀 Installation & Utilisation
 
-### 1. حمل السكريبت
+### 1. Cloner le script
 ```bash
 git clone https://github.com/username/server-performance-stats.git
 cd server-performance-stats
 ```
 
-### 2. عطيه صلاحية التنفيذ (executable permission)
+### 2. Donner les droits d'exécution
 ```bash
 chmod +x server-stats.sh
 ```
 
-### 3. شغله
+### 3. Lancer le script
 ```bash
 ./server-stats.sh
 ```
 
-## 📊 Example Output
+## 📊 Exemple de sortie
 
 ```
 =========================================
@@ -72,29 +72,29 @@ Top 5 processes by memory usage:
    ...
 ```
 
-## 🔍 كيفاش خدام السكريبت (Technical Breakdown)
+## 🔍 Fonctionnement technique
 
-| Section | Command Used | الشرح |
+| Section | Commande utilisée | Explication |
 |---|---|---|
-| CPU Usage | `top -bn1 \| grep "Cpu(s)"` | كيجيب نسبة الـ Idle CPU وكينقصها من 100 باش يحصل على نسبة الاستعمال الحقيقية |
-| Memory Usage | `free -m` | كيعطي RAM بـ Megabytes، و awk كيحسب النسبة المئوية |
-| Disk Usage | `df -h --total` | كيعطي مساحة الديسك الكلية (total) بدل كل partition لوحدو |
-| Top CPU Processes | `ps -eo pid,cmd,%cpu --sort=-%cpu` | كيرتب processes حسب استهلاك CPU من الأكبر للأصغر |
-| Top Memory Processes | `ps -eo pid,cmd,%mem --sort=-%mem` | كيرتب processes حسب استهلاك RAM من الأكبر للأصغر |
+| CPU Usage | `top -bn1 \| grep "Cpu(s)"` | Récupère le pourcentage d'inactivité (Idle) du CPU et le soustrait de 100 pour obtenir le taux d'utilisation réel |
+| Memory Usage | `free -m` | Affiche la RAM en Mégaoctets, `awk` calcule ensuite le pourcentage |
+| Disk Usage | `df -h --total` | Donne l'espace disque total (au lieu de chaque partition séparément) |
+| Top CPU Processes | `ps -eo pid,cmd,%cpu --sort=-%cpu` | Trie les processus par consommation CPU, du plus grand au plus petit |
+| Top Memory Processes | `ps -eo pid,cmd,%mem --sort=-%mem` | Trie les processus par consommation RAM, du plus grand au plus petit |
 
-## 💡 Possible Improvements (Ideas for later)
+## 💡 Améliorations possibles
 
-- [ ] زيادة argument بحال `--cpu-only` وla `--mem-only` باش يعرض غير جزء واحد
-- [ ] Export النتائج لملف log (`.txt` وla `.csv`)
-- [ ] إضافة alert/notification إلا CPU وla RAM دازو حد معين (threshold)
-- [ ] دعم multiple servers عبر SSH
-- [ ] عرض uptime ديال السرفر
-- [ ] Cron job باش يشغل السكريبت automatiquement كل فترة
+- [ ] Ajouter des arguments comme `--cpu-only` ou `--mem-only` pour n'afficher qu'une seule section
+- [ ] Exporter les résultats dans un fichier log (`.txt` ou `.csv`)
+- [ ] Ajouter des alertes/notifications si le CPU ou la RAM dépassent un certain seuil
+- [ ] Support de plusieurs serveurs via SSH
+- [ ] Afficher l'uptime du serveur
+- [ ] Automatiser l'exécution via un cron job
 
-## 📄 License
+## 📄 Licence
 
-Had المشروع مفتوح للاستعمال والتعديل بحرية (MIT License).
+Ce projet est libre d'utilisation et de modification (Licence MIT).
 
-## 🤝 Contributing
+## 🤝 Contribuer
 
-Pull requests مرحب بيهم! إلا عندك اقتراح واlla bug، حل issue وla دير PR.
+Les pull requests sont les bienvenues ! Si tu as une suggestion ou trouves un bug, ouvre une issue ou propose une PR.
